@@ -12,5 +12,6 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    file_put_contents(storage_path('test.csv'), 'a,b,c');
+    return response()->download(storage_path('test.csv'))->deleteFileAfterSend(true);
 });
